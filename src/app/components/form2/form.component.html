@@ -1,0 +1,22 @@
+<h1>Form {{title}} - {{color}}</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div><input type="text" formControlName="email">
+    <span *ngIf="form.get('email').errors && form.get('email').errors['emailError']">{{form.get('email').errors['emailError'].value}}</span>
+  </div>
+  <div><input type="password" formControlName="pass">
+    <span *ngIf="form.get('pass').invalid">Заполни!</span>
+    <span *ngIf="form.get('pass').errors && form.get('pass').errors['lengthError']">{{form.get('pass').errors['lengthError'].value}}</span>
+  </div>
+  <div>
+    <select formControlName="country">
+      <option value="ru">rus</option>
+      <option value="by">belarus</option>
+      <option value="ua">ykr</option>
+    </select>
+  </div>
+  <div *ngFor="let ans of answers">
+    <label>{{ans.text}}</label>
+    <input type="radio" [value]="ans.type" formControlName="answers">
+  </div>
+  <button type="submit" [disabled]="form.invalid">save</button>
+</form>

@@ -1,0 +1,18 @@
+<h1>Form {{title}}</h1>
+<form (ngSubmit)="submitForm(form)" #form="ngForm">
+  <div><input type="text" ngModel #email="ngModel" name="email" required email><p *ngIf="email.invalid&&email.touched">add correct email</p></div>
+  <div><input type="password" ngModel name="pass" required></div>
+  <div>
+    <select [ngModel]="defaultCountry" name="country" required>
+      <option value="ru">rus</option>
+      <option value="by">belarus</option>
+      <option value="ua">ykr</option>
+    </select>
+  </div>
+  <div *ngFor="let ans of answers">
+    <label>{{ans.text}}</label>
+    <input type="radio" [value]="ans.type" [ngModel]="defaultAnswer" name="answer">
+  </div>
+  <button type="submit" [disabled]="!form.valid">save</button>
+</form>
+<pre>{{formData | json}}</pre>

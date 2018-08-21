@@ -1,0 +1,17 @@
+<div>
+  <hr><button (click)="openFormPage()">open form page</button><hr>
+  <h1><ng-content></ng-content></h1>
+
+  <input type="text" (input)="onKeyUp(myInp.value)" #myInp>
+  <input type="text" [(ngModel)]="inputText" #myInpRefView>
+  <button (click)="addCar(myInp)" *ngIf="inputText!=='';else waitStatus">Add carr</button>
+  <ng-template  #waitStatus>
+    <span>add text</span>
+  </ng-template>
+  <p *ngFor="let car of cars" (click)="pClick(car)">{{car | uppercase}}</p>
+  <div [ngSwitch]="car">
+    <span *ngSwitchCase="'ford'">{{car}} is cool!</span>
+    <span *ngSwitchDefault="" appExample>{{car}} default</span>
+  </div>
+  <button>add car</button>
+</div>

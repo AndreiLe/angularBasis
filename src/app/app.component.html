@@ -1,0 +1,27 @@
+<nav>
+  <a [routerLink]="['/about']">Load about page</a>
+</nav>
+<div>
+  <ul>
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/" >Main</a></li>
+    <li routerLinkActive="active"><a routerLink="/cars">Cars</a></li>
+    <li routerLinkActive="active"><a [routerLink]="['/form', 'custom-title']" [queryParams]="{color: 'red'}">Form</a></li>
+  </ul>
+  <hr>
+  <button (click)="logIn()">in</button>
+  <button (click)="logOut()">out</button>
+</div>
+
+<div [@clickedDiv]="clickDivState" (click)="changeDivState()"></div>
+
+<h1 appExample [hoverColor]="'blue'" [defaultColor]="'transparent'">test</h1>
+
+<!-- <app-my [cars]="cars" (onChangeText)="updateCarList($event)">Title1</app-my> -->
+<p>{{inputText | appPow:'text'}}</p>
+<button (click)="addCar()">add car</button>
+<button (click)="getCarsHttp()">get car http</button>
+<button (click)="addCarsHttp()">add car http</button>
+<button (click)="deleteCarsHttp()">delete car http</button>
+
+<router-outlet></router-outlet>
+
